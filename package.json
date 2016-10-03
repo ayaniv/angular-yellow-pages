@@ -1,0 +1,24 @@
+{
+  "name": "klarna",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "index.js",
+  "dependencies": {
+    "angular": "1.4",
+    "lodash": "^4.15.0",
+    "moment" : "2.14.1",
+    "ng-infinite-scroll" : "1.0.0",
+    "jquery" : "3.1.0"
+  },
+  "private": true,
+  "devDependencies": {
+    "node-sass": "^3.8.0",
+    "nodemon": "^1.10.2"
+  },
+  "scripts": {
+    "build-css": "node-sass --include-path scss scss/main.scss public/style/myStyles.css"
+  },
+  "keywords": [],
+  "author": "Yaniv Aharon",
+  "license": "ISC"
+}

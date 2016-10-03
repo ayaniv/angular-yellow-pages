@@ -1,0 +1,83 @@
+<html ng-app="yellowPages">
+  <head>
+
+    
+    <link
+      href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'
+      rel='stylesheet'
+      type='text/css'>
+    <link
+      href='/public/style/klarna-ui-css-components.css'
+      rel='stylesheet'
+      type='text/css'>
+
+    <link rel="stylesheet"  type="text/css" href="/public/style/myStyles.css">
+
+    
+    <script type='text/javascript' src='/node_modules/jquery/dist/jquery.min.js'></script>
+    <script type="text/javascript" src="/node_modules/lodash/lodash.js"></script>
+    <script type="text/javascript" src="/node_modules/angular/angular.js"></script>    
+    <script type='text/javascript' src='/node_modules/ng-infinite-scroll/build/ng-infinite-scroll.min.js'></script>
+    <script type="text/javascript" src="/node_modules/moment/moment.js"></script>
+
+    <script type="text/javascript" src="/public/js/script.js"></script>
+    <style>
+
+    </style>
+    <title>Yaniv Aharon</title>
+  </head>
+  <body ng-controller="YellowPagesCtrl as YellowPagesCtrl">
+    <div class="search">
+      <div class="cui__input giant">
+        <input type="text" name="inputSearch"
+        ng-model="YellowPagesCtrl.inputString"
+        ng-model-options="{ debounce: 1000 }"
+        placeholder="Type your search query" class="cui__input__input" />
+      </div>
+
+      <div class="results">
+
+          <h2 class="cui__selector--direct__title" ng-if="YellowPagesCtrl.showSearchResults">
+            Search results
+          </h2>
+
+          <div class="empty-state" ng-if="YellowPagesCtrl.currPeopleResult.length == 0 && YellowPagesCtrl.showSearchResults">
+            <div class="cui__selector--direct__description">
+              No results, please review your search or try a different one
+            </div>
+          </div>
+
+          <div class="sk-folding-cube" ng-if="YellowPagesCtrl.isAjaxLoading">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+          </div>
+
+          <div class="search-results-container" 
+            infinite-scroll="YellowPagesCtrl.GetData()"
+            infinite-scroll-container="'#main'"
+            infinite-scroll-distance="100"
+           ng-if="YellowPagesCtrl.currPeopleResult.length > 0">
+
+            <div class="cui__selector--direct__item" ng-repeat="person in YellowPagesCtrl.currPeopleResult track by $index">
+              <div class="avatar-container">
+                <img class="user-avatar" ng-src="{{person.avatar}}" />
+              </div>
+
+              <div class="user-details-container">
+                <div class="cui__selector--direct__label">{{person.name}}, Age: {{person.age}}</div>
+                <div class="cui__selector--direct__description">{{person.address}}</div>
+              </div>
+
+              <div class="phone-container">
+                <img src="public/images/phone-icon.png" class="phone-icon"  />
+                <span class="cui__selector--direct__label">{{person.phone}}</span>
+              </div>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </body>
+</html>
