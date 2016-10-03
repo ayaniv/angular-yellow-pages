@@ -1,5 +1,5 @@
 Design: Yellow Pages
-By: Yaniv Aharon, ayaniv@gmail.com
+By: Yaniv Aharon
 
 * searching for people by their _name_, _age_, _phone number_, or any combination thereof.
 * empty state: `No results, please review your search or try a different one`
@@ -96,17 +96,27 @@ Assumptions:
 3. client-side infinite scroll
 4. same type of search widen search results
 
+known issues:
+------------
+1. The initial query is very slow (there are frontend solutions for that)
+2. On each scroll for the same query, it goes over all persons just to get the next page
+3. Implementation of static file serving, instead of using simple npm module which servers static files 
+4. The search solution is limited (comparing to search engines solutions), it is not easy to implement a perfect one, but you could have used npm client-side solution for that  
+
+
 Installation:
 -------------
 1. copy your 'people.json' file into 'public/data' directory.
 2. run the following lines:
-
-npm i
-npm run build-css
-node runServer.js
+	
+	```
+	npm i
+	npm run build-css
+	node runServer.js
+	```
 
 3. open browser and navigate to:
-http://localhost:8069/klarna
+http://localhost:8069/
 
 
 
